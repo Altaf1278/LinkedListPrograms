@@ -18,15 +18,33 @@ class LinkedList {
 	}
 
 	public void append(int data) {
-		Node new_node = new Node(data);
+		Node node1 = new Node(data);
 		if (head == null) {
-			head = new_node;
+			head = node1;
 		} else {
 			Node current = head;
 			while (current.next != null) {
 				current = current.next;
 			}
-			current.next = new_node;
+			current.next = node1;
+		}
+	}
+
+	public void insert(int data, int afterData) {
+		Node node1 = new Node(data);
+		if (head == null) {
+			head = node1;
+		} else {
+			Node current = head;
+			while (current != null && current.data != afterData) {
+				current = current.next;
+			}
+			if (current != null) {
+				node1.next = current.next;
+				current.next = node1;
+			} else {
+				System.out.println("Node with data " + afterData + " not found");
+			}
 		}
 	}
 
@@ -44,8 +62,9 @@ public class LinkedListDemo {
 	public static void main(String[] args) {
 		LinkedList myList = new LinkedList();
 		myList.append(56);
-		myList.append(30);
 		myList.append(70);
+
+		myList.insert(30, 56);
 
 		myList.printList(); // prints: 56->30->70->null
 	}
