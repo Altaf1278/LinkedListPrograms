@@ -56,6 +56,14 @@ class LinkedList {
 		}
 		System.out.println("null");
 	}
+
+	public void pop() {
+		if (head == null) {
+			System.out.println("Linked list is empty.");
+		} else {
+			head = head.next;
+		}
+	}
 }
 
 public class LinkedListDemo {
@@ -65,7 +73,7 @@ public class LinkedListDemo {
 		myList.append(70);
 
 		myList.insert(30, 56);
-
-		myList.printList(); // prints: 56->30->70->null
+		myList.pop();
+		myList.printList();
 	}
 }
